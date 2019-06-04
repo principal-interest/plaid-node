@@ -126,6 +126,20 @@ declare module 'plaid' {
     name: string;
     products: Array<string>;
     country_codes: Array<string>;
+    status?: InstitutionStatus
+  }
+
+  interface InstitutionStatus {
+    item_logins: InstitutionStatusBreakdown,
+    transactions_updates: InstitutionStatusBreakdown
+  }
+
+  interface InstitutionStatusBreakdown {
+    last_status_change: InstitutionStatusBreakdown,
+    success: number,
+    error_plaid: number,
+    error_institution: number,
+    refresh_interval?: string
   }
 
   interface InstitutionWithDisplayData extends Institution {
